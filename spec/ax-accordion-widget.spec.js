@@ -414,15 +414,15 @@ define( [
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
             it( 'ignores (but logs) confirmation without preceeding request (R2.5)', function() {
-               spyOn( ax.log, 'develop' );
+               spyOn( ax.log, 'debug' );
 
                testBed.eventBusMock.publish( 'takeActionRequest.selectionConfirmed', {
-                     action: 'selectionConfirmed' }
-               );
+                  action: 'selectionConfirmed'
+               } );
                jasmine.Clock.tick( 0 );
 
                expect( testBed.scope.model.selectedPanel ).toEqual( 0 );
-               expect( ax.log.develop ).toHaveBeenCalled();
+               expect( ax.log.debug ).toHaveBeenCalled();
             } );
 
 
