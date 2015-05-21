@@ -8,7 +8,7 @@
    },
 
    "controls": [
-      "laxar_uikit/controls/accordion",
+      "laxar-accordion-control",
       "laxar_uikit/controls/i18n"
    ],
 
