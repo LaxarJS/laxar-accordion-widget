@@ -3,6 +3,8 @@
 ## Last Changes
 
 
+- [#6](https://github.com/LaxarJS/ax-accordion-widget/issues/6): updated LaxarJS dependencies and updated contribution information
+
 - [#5](https://github.com/LaxarJS/ax-accordion-widget/issues/5): controls: fixed wrong path to i18n control
 
 ## v2.0.0
