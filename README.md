@@ -1,4 +1,4 @@
-# AxAccordionWidget
+# AxAccordionWidget [![Build Status](https://travis-ci.org/LaxarJS/ax-accordion-widget.svg?branch=master)](https://travis-ci.org/LaxarJS/ax-accordion-widget)
 
 Displays multiple areas in the form of an accordion.
 Each area provides a widget area.
