@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#13](https://github.com/LaxarJS/ax-accordion-widget/issues/8): Added a `.travis.yml` for open continuous integration
+
 
 ## v2.1.0
 
