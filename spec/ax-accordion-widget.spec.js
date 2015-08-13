@@ -4,12 +4,13 @@
  * http://laxarjs.org/license
  */
 define( [
+   'json!../widget.json',
    '../ax-accordion-widget',
    'laxar/laxar_testing'
-], function( controller, ax ) {
+], function( descriptor, controller, ax ) {
    'use strict';
 
-   describe( 'An AxAccordionWidget', function() {
+   describe( 'An ax-accordion-widget', function() {
 
       var testBed;
 
@@ -555,7 +556,7 @@ define( [
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
    function testBedAfterDidNavigate( testBedInitCallback, testBedSetupCallback ) {
-      var testBed = ax.testing.portalMocksAngular.createControllerTestBed( 'laxarjs/ax-accordion-widget' );
+      var testBed = ax.testing.portalMocksAngular.createControllerTestBed( descriptor );
       testBed.useWidgetJson();
 
       // populating these for simpler access in tests

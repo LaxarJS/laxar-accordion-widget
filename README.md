@@ -1,4 +1,4 @@
-# AxAccordionWidget [![Build Status](https://travis-ci.org/LaxarJS/ax-accordion-widget.svg?branch=master)](https://travis-ci.org/LaxarJS/ax-accordion-widget)
+# ax-accordion-widget [![Build Status](https://travis-ci.org/LaxarJS/ax-accordion-widget.svg?branch=master)](https://travis-ci.org/LaxarJS/ax-accordion-widget)
 
 Displays multiple areas in the form of an accordion.
 Each area provides a widget area.
@@ -14,9 +14,9 @@ Each area provides a widget area.
 
 
 ## Appearance
-![Illustration of the AxAccordionWidget](docs/img/example_1.png)
+![Illustration of the ax-accordion-widget](docs/img/example_1.png)
 
-An AxAccordionWidget with three areas.
+An ax-accordion-widget with three areas.
 The second area is selected and its widget area is visible.
 
 
@@ -63,7 +63,7 @@ For installation instruction take a look at the [LaxarJS documentation](https://
 }
 ```
 
-Use this configuration on a page to get an AxAccordionWidget instance with three areas.
+Use this configuration on a page to get an ax-accordion-widget instance with three areas.
 
 For full configuration options refer to the [widget.json](widget.json).
 
