@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+
+## v2.2.0
+
 - [#7](https://github.com/LaxarJS/ax-accordion-widget/pull/7): Support AMD references (and installation through bower)
 - [#13](https://github.com/LaxarJS/ax-accordion-widget/issues/13): Added a `.travis.yml` for open continuous integration
 
