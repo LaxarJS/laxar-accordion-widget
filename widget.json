@@ -1,5 +1,5 @@
 {
-   "name": "AxAccordionWidget",
+   "name": "ax-accordion-widget",
    "description": "Displays multiple areas in the form of an accordion.",
 
    "integration": {
