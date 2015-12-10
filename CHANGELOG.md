@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#10](https://github.com/LaxarJS/ax-accordion-widget/issues/10): Expanded the widget definition
+
 
 ## v2.2.0
 
