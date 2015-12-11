@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#11](https://github.com/LaxarJS/ax-accordion-widget/issues/11): Fixed the Travis config for LaxarJS 1.0.0 compatibility
+
 
 ## v2.3.0
 
