@@ -6,9 +6,9 @@ env:
    matrix:
       # Support the laxar 1.2.0-alpha.2 version
       - GRUNT_LAXAR_VERSION=~1.1.0-0
-        LAXAR_VERSION=v1.2.0-alpha.2
+        LAXAR_VERSION=~1.2.0-alpha.2
         LAXAR_UIKIT_VERSION=~1.1.0
-        LAXAR_PATTERNS_VERSION=v1.2.0-alpha.2
+        LAXAR_PATTERNS_VERSION=~1.2.0-alpha.2
 before_install:
    - echo "{}" > "package.json"
    - export PATH="$PATH:$(npm bin)"

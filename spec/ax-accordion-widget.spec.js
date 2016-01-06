@@ -7,7 +7,7 @@ define( [
    'json!../widget.json',
    'laxar-mocks',
    'angular-mocks',
-   'laxar',
+   'laxar'
 ], function( descriptor, axMocks, ngMocks, ax ) {
    'use strict';
 
