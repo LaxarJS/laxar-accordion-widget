@@ -1,7 +1,7 @@
 /**
- * Copyright 2014 aixigo AG
+ * Copyright 2015 aixigo AG
  * Released under the MIT license.
- * http://laxarjs.org/license
+ * http://www.laxarjs.org
  */
 ( function( global ) {
    'use strict';
@@ -10,6 +10,8 @@
       tests: [
          'ax-accordion-widget.spec'
       ],
-      requireConfig: {}
+      testRunner: 'laxar-mocks',
+      jasmineMajorVersion: 2
    };
 } )( this );
+
