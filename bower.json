@@ -7,10 +7,9 @@
       "url": "https://github.com/LaxarJS/ax-accordion-widget.git"
    },
    "dependencies": {
-      "laxar": "v1.2.0-alpha.2",
-      "laxar-patterns": "v1.2.0-alpha.2",
-      "laxar-uikit": "^1.1.0",
-
+      "laxar": "~1.2.0-alpha.2",
+      "laxar-patterns": "~1.2.0-alpha.2",
+      "laxar-uikit": "~1.1.0",
       "laxar-accordion-control": "^1.0.0"
    },
    "devDependencies": {

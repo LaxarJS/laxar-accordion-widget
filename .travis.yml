@@ -5,7 +5,7 @@ node_js:
 env:
    matrix:
       # Support the laxar 1.2.0-alpha.2 version
-      - GRUNT_LAXAR_VERSION=~1.1.0-0
+      - GRUNT_LAXAR_VERSION=~1.1.2
         LAXAR_VERSION=~1.2.0-alpha.2
         LAXAR_UIKIT_VERSION=~1.1.0
         LAXAR_PATTERNS_VERSION=~1.2.0-alpha.2
