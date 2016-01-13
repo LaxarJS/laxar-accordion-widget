@@ -2,7 +2,8 @@
 
 ## Last Changes
 
-- [#12](https://github.com/LaxarJS/ax-accordion-widget/issues/12): Use laxar-mocks instead of laxar-testing now.
+- [#13](https://github.com/LaxarJS/ax-accordion-widget/issues/13): Remove unnecessary injection in test setup
+- [#12](https://github.com/LaxarJS/ax-accordion-widget/issues/12): Use laxar-mocks instead of laxar-testing now
 - [#11](https://github.com/LaxarJS/ax-accordion-widget/issues/11): Fixed the Travis config for LaxarJS 1.0.0 compatibility
 
 

@@ -12,8 +12,6 @@ define( [
    'use strict';
 
    describe( 'An ax-accordion-widget', function() {
-      var $httpBackend;
-      var $provide;
       var widgetEventBus;
       var widgetScope;
       var testEventBus;
@@ -21,12 +19,6 @@ define( [
       ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
       function createSetup( widgetConfiguration ) {
-
-         beforeEach( function() {
-            ngMocks.module( function( _$provide_ ) {
-               $provide = _$provide_;
-            } );
-         } );
 
          beforeEach( axMocks.createSetupForWidget( descriptor, {
             knownMissingResources: [ 'ax-accordion-widget.css', 'ax-i18n-control.css' ]
@@ -42,9 +34,6 @@ define( [
             widgetScope = axMocks.widget.$scope;
             widgetEventBus = axMocks.widget.axEventBus;
             testEventBus = axMocks.eventBus;
-            ngMocks.inject( function( $injector ) {
-               $httpBackend = $injector.get( '$httpBackend' );
-            } );
          } );
       }
 
@@ -55,8 +44,6 @@ define( [
       } );
 
       ////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-      var testBed;
 
       describe( 'with configured areas', function() {
          var configuration = {
