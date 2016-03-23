@@ -297,6 +297,12 @@ define( [
 
          /////////////////////////////////////////////////////////////////////////////////////////////////////
 
+         it( 'sets the active class of the initially opened panel', function() {
+            expect( widgetScope.model.panels[ 0 ].classes.active ).toBe( true );
+         } );
+
+         /////////////////////////////////////////////////////////////////////////////////////////////////////
+
          it( 'the selected tab is highlighted (R1.14)', function() {
             widgetScope.model.onBeforeActivate( 0 );
              testEventBus.flush();
