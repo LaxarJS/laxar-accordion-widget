@@ -183,7 +183,7 @@ define( [
 
       function handleDidConfirmSelection() {
          if( requestedPanel < 0 ) {
-            ax.log.develop( 'Received selection confirmation, but no panel selection was requested.' );
+            ax.log.debug( 'Received selection confirmation, but no panel selection was requested.' );
             return;
          }
          if( requestedPanel > $scope.model.panels.length - 1 ) {
