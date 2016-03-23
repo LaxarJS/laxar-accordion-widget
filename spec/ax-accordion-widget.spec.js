@@ -290,6 +290,33 @@ define( [
             jasmine.Clock.tick( 0 );
             expect( testBed.scope.model.onBeforeActivate( 1 ) ).toBe( true );
          } );
+
+         /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+         describe( 'when set to visible', function() {
+
+            beforeEach( function() {
+               var widgetArea = testBed.scope.widget.area;
+               testBed.eventBusMock.publish( 'didChangeAreaVisibility.' + widgetArea + '.true', {
+                  area: widgetArea,
+                  visible: true
+               } );
+               jasmine.Clock.tick( 0 );
+            } );
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            it( 'requests change of the visibility state for the initially visible area (#14)', function() {
+               var area = testBed.scope.widget.id + '.firstArea';
+               expect( testBed.scope.eventBus.publishAndGatherReplies )
+                  .toHaveBeenCalledWith( 'changeAreaVisibilityRequest.' + area + '.true', {
+                     area: area,
+                     visible: true
+                  }, { deliverToSender: false } );
+            } );
+
+         } );
+
       } );
 
       ////////////////////////////////////////////////////////////////////////////////////////////////////////
