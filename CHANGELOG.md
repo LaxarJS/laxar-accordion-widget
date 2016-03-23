@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#15](https://github.com/LaxarJS/ax-accordion-widget/issues/15): fixed active css class initially not being set
+
 
 ## v2.4.1
 

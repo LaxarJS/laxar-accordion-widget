@@ -86,7 +86,7 @@ define( [
                'ax-anonymize-me': area.anonymize,
                disabled: false,
                error: false,
-               active: false
+               active: index === $scope.model.selectedPanel
             }
          };
 
