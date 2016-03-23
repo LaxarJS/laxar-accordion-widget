@@ -47,6 +47,7 @@ define( [
 
       ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+      var initialVisibilityPublished = false;
       patterns.visibility.handlerFor( $scope, {
          // set nested area visibility depending on the `areaShowing` state and on the context visibility
          onAnyAreaRequest: function( event ) {
@@ -62,6 +63,14 @@ define( [
 
             function isOk( index ) {
                return angular.isNumber( index ) && index >= 0;
+            }
+         },
+         onShow: function() {
+            if( !initialVisibilityPublished ) {
+               var areaName = $scope.widget.id + '.' +
+                  $scope.model.panels[ $scope.model.selectedPanel ].areaName;
+               patterns.visibility.requestPublisherForArea( $scope, areaName )( true );
+               initialVisibilityPublished = true;
             }
          }
       } );
