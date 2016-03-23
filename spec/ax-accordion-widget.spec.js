@@ -268,6 +268,12 @@ define( [
 
          /////////////////////////////////////////////////////////////////////////////////////////////////////
 
+         it( 'sets the active class of the initially opened panel', function() {
+            expect( testBed.scope.model.panels[ 0 ].classes.active ).toBe( true );
+         } );
+
+         /////////////////////////////////////////////////////////////////////////////////////////////////////
+
          it( 'the selected tab is highlighted (R1.14)', function() {
             testBed.scope.model.onBeforeActivate( 0 );
             jasmine.Clock.tick( 0 );
