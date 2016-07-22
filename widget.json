@@ -9,7 +9,7 @@
 
    "controls": [
       "laxar-accordion-control",
-      "laxar-uikit/controls/i18n"
+      "laxar-i18n-control"
    ],
 
    "features": {
