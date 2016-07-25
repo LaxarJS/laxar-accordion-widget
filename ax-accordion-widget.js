@@ -6,7 +6,8 @@
 define( [
    'angular',
    'laxar',
-   'laxar-patterns'
+   'laxar-patterns',
+   'laxar-accordion-control/ax-accordion-control'
 ], function( angular, ax, patterns ) {
    'use strict';
 
