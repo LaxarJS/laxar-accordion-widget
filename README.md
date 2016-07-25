@@ -1,7 +1,6 @@
-# ax-accordion-widget [![Build Status](https://travis-ci.org/LaxarJS/ax-accordion-widget.svg?branch=master)](https://travis-ci.org/LaxarJS/ax-accordion-widget)
+# laxar-accordion-widget [![Build Status](https://travis-ci.org/LaxarJS/ax-accordion-widget.svg?branch=master)](https://travis-ci.org/LaxarJS/ax-accordion-widget)
 
-Displays multiple areas in the form of an accordion.
-Each area provides a widget area.
+> LaxarJS widget written in AngularJS v1 that provides multiple widget areas in the form of an accordion
 
 
 ## Content
@@ -14,23 +13,28 @@ Each area provides a widget area.
 
 
 ## Appearance
-![Illustration of the ax-accordion-widget](docs/img/example_1.png)
+![Illustration of the laxar-accordion-widget](docs/img/example_1.png)
 
-An ax-accordion-widget with three areas.
+A laxar-accordion-widget with three areas.
 The second area is selected and its widget area is visible.
 
 
 ## Usage
 
 ### Installation
-For installation instruction take a look at the [LaxarJS documentation](https://github.com/LaxarJS/laxar/blob/master/docs/manuals/installing_widgets.md).
+
+For use within LaxarJS v1 projects:
+
+```console
+npm install laxar-accordion-widget
+```
 
 
 ### Configuration Example
 
 ```json
 {
-   "widget": "laxarjs/ax-accordion-widget",
+   "widget": "laxar-accordion-widget",
    "id": "outerAccordion",
    "features": {
       "areas": [
@@ -38,24 +42,24 @@ For installation instruction take a look at the [LaxarJS documentation](https://
             "name": "first",
             "flag": "firstArea",
             "i18nHtmlLabel": {
-               "en_US": "First Area",
-               "de_DE": "Erster Bereich"
+               "en": "First Area",
+               "de": "Erster Bereich"
             }
          },
          {
             "name": "second",
             "flag": "secondArea",
             "i18nHtmlLabel": {
-               "en_US": "Second Area",
-               "de_DE": "Zweiter Bereich"
+               "en": "Second Area",
+               "de": "Zweiter Bereich"
             }
          },
          {
             "name": "third",
             "flag": "thirdArea",
             "i18nHtmlLabel": {
-               "en_US": "Third Area",
-               "de_DE": "Dritter Bereich"
+               "en": "Third Area",
+               "de": "Dritter Bereich"
             }
          }
       ]
@@ -63,7 +67,7 @@ For installation instruction take a look at the [LaxarJS documentation](https://
 }
 ```
 
-Use this configuration on a page to get an ax-accordion-widget instance with three areas.
+Use this configuration on a page for a laxar-accordion-widget instance with three areas.
 
 For full configuration options refer to the [widget.json](widget.json).
 

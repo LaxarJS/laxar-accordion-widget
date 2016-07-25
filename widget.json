@@ -1,5 +1,5 @@
 {
-   "name": "ax-accordion-widget",
+   "name": "laxar-accordion-widget",
    "description": "Displays multiple areas in the form of an accordion.",
 
    "integration": {
@@ -8,8 +8,7 @@
    },
 
    "controls": [
-      "laxar-accordion-control",
-      "laxar-uikit/controls/i18n"
+      "laxar-accordion-control"
    ],
 
    "features": {
