@@ -7,7 +7,6 @@
 import * as ng from 'angular';
 import * as ax from 'laxar';
 import * as patterns from 'laxar-patterns';
-import 'laxar-accordion-control/ax-accordion-control';
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
