@@ -5,13 +5,12 @@
  */
 
 import * as ng from 'angular';
-import * as patterns from 'laxar-patterns';
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-Controller.$inject = [ '$scope', 'axEventBus', 'axFeatures', 'axLog', 'axVisibility' ];
+Controller.$inject = [ '$scope', 'axEventBus', 'axFeatures', 'axLog', 'axVisibility', 'axI18n' ];
 
-function Controller( $scope, eventBus, features, log, visibility ) {
+function Controller( $scope, eventBus, features, log, visibility, i18n ) {
 
    let requestedPanelIndex = -1;
    let allowNextPanelActivation = false;
@@ -21,13 +20,12 @@ function Controller( $scope, eventBus, features, log, visibility ) {
       selectedPanel: 0
    };
 
-   const localize = patterns.i18n.handlerFor( $scope ).scopeLocaleFromFeature( 'i18n', {
-      onChange() {
-         $scope.model.panels.forEach( ( areaModel, index ) => {
-            areaModel.htmlLabel = localize( features.areas[ index ].i18nHtmlLabel );
-         } );
-      }
-   } ).localizer();
+   const { localize } = i18n;
+   i18n.whenLocaleChanged( () => {
+      $scope.model.panels.forEach( ( areaModel, index ) => {
+         areaModel.htmlLabel = localize( features.areas[ index ].i18nHtmlLabel );
+      } );
+   } );
 
    $scope.model.panels = features.areas.map( createPanelModel );
 
