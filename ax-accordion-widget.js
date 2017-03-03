@@ -107,21 +107,20 @@ function Controller( $scope, eventBus, features, log, visibility, i18n ) {
       }
 
       if( !isNaN( newIndex ) ) {
+         console.log( 'requestedPanelIndex:=', newIndex, new Error().stack );
          requestedPanelIndex = newIndex;
-         const requestedPanel = $scope.model.panels[ newIndex ];
          publishFlagIfConfigured( newIndex, true );
-         const action = requestedPanel.selection || null;
+         const { action } = features.areas[ newIndex ].selection || {};
          if( action ) {
             $scope.eventBus.publish( `takeActionRequest.${action}`, { action } );
          }
-         visibilityChanges[ requestedPanel.areaName ] = true;
+         visibilityChanges[ $scope.model.panels[ newIndex ].areaName ] = true;
       }
 
       if( !isNaN( previousIndex ) || !isNaN( newIndex ) ) {
          visibility.updateAreaVisibility( visibilityChanges ).then( () => {
             if( isNaN( requestedPanelIndex ) ) { return; }
-            const requestedPanel = $scope.model.panels[ requestedPanelIndex ];
-            requestedPanel.classes.active = true;
+            $scope.model.panels[ requestedPanelIndex ].classes.active = true;
             $scope.model.selectedPanel = newIndex;
             allowNextPanelActivation = true;
          } );
@@ -131,7 +130,7 @@ function Controller( $scope, eventBus, features, log, visibility, i18n ) {
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
    function createSelectionRequestTriggerHandler( areaFeatures, index ) {
-      return function() {
+      return () => {
          if( areaFeatures.selectionRequest && areaFeatures.selectionRequest.action ) {
             $scope.model.onBeforeActivate( index );
          }
@@ -144,6 +143,7 @@ function Controller( $scope, eventBus, features, log, visibility, i18n ) {
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
    function handleDidConfirmSelection() {
+      console.log( 'LOG ME?', requestedPanelIndex );
       if( requestedPanelIndex < 0 ) {
          log.debug( 'Received selection confirmation, but no panel selection was requested.' );
          return;
@@ -153,12 +153,13 @@ function Controller( $scope, eventBus, features, log, visibility, i18n ) {
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-   $scope.model.onBeforeActivate = function( index ) {
+   $scope.model.onBeforeActivate = index => {
       if( $scope.model.panels[ index ].classes.disabled ) {
          return false;
       }
 
       if( allowNextPanelActivation && index === requestedPanelIndex ) {
+         console.log( 'requestedPanelIndex :=', -1 );
          requestedPanelIndex = -1;
          allowNextPanelActivation = false;
          // selection was already confirmed, allow UI to reflect it now:
@@ -168,6 +169,7 @@ function Controller( $scope, eventBus, features, log, visibility, i18n ) {
       const { selectionRequest } = features.areas[ index ] || {};
       if( selectionRequest ) {
          const { action } = selectionRequest || {};
+         console.log( 'selectionRequest requestedPanelIndex :=', index );
          requestedPanelIndex = index;
          $scope.eventBus.publish( `takeActionRequest.${action}`, { action } );
       }
