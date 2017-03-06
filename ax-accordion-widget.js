@@ -6,8 +6,6 @@
 
 import * as ng from 'angular';
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 Controller.$inject = [ '$scope', 'axEventBus', 'axFeatures', 'axLog', 'axVisibility', 'axI18n' ];
 
 function Controller( $scope, eventBus, features, log, visibility, i18n ) {
@@ -107,7 +105,6 @@ function Controller( $scope, eventBus, features, log, visibility, i18n ) {
       }
 
       if( !isNaN( newIndex ) ) {
-         console.log( 'requestedPanelIndex:=', newIndex, new Error().stack );
          requestedPanelIndex = newIndex;
          publishFlagIfConfigured( newIndex, true );
          const { action } = features.areas[ newIndex ].selection || {};
@@ -119,7 +116,7 @@ function Controller( $scope, eventBus, features, log, visibility, i18n ) {
 
       if( !isNaN( previousIndex ) || !isNaN( newIndex ) ) {
          visibility.updateAreaVisibility( visibilityChanges ).then( () => {
-            if( isNaN( requestedPanelIndex ) ) { return; }
+            if( isNaN( requestedPanelIndex ) || requestedPanelIndex === -1 ) { return; }
             $scope.model.panels[ requestedPanelIndex ].classes.active = true;
             $scope.model.selectedPanel = newIndex;
             allowNextPanelActivation = true;
@@ -143,7 +140,6 @@ function Controller( $scope, eventBus, features, log, visibility, i18n ) {
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
    function handleDidConfirmSelection() {
-      console.log( 'LOG ME?', requestedPanelIndex );
       if( requestedPanelIndex < 0 ) {
          log.debug( 'Received selection confirmation, but no panel selection was requested.' );
          return;
@@ -159,7 +155,6 @@ function Controller( $scope, eventBus, features, log, visibility, i18n ) {
       }
 
       if( allowNextPanelActivation && index === requestedPanelIndex ) {
-         console.log( 'requestedPanelIndex :=', -1 );
          requestedPanelIndex = -1;
          allowNextPanelActivation = false;
          // selection was already confirmed, allow UI to reflect it now:
@@ -169,7 +164,6 @@ function Controller( $scope, eventBus, features, log, visibility, i18n ) {
       const { selectionRequest } = features.areas[ index ] || {};
       if( selectionRequest ) {
          const { action } = selectionRequest || {};
-         console.log( 'selectionRequest requestedPanelIndex :=', index );
          requestedPanelIndex = index;
          $scope.eventBus.publish( `takeActionRequest.${action}`, { action } );
       }

@@ -7,9 +7,6 @@ import * as axMocks from 'laxar-mocks';
 import 'angular';
 import 'angular-mocks';
 
-// TODO remove
-const ax = {};
-
 describe( 'An ax-accordion-widget', () => {
 
    let widgetEventBus;
@@ -338,7 +335,6 @@ describe( 'An ax-accordion-widget', () => {
       ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
       it( 'sends the configured action after successful selection (R1.16)', () => {
-         console.log( 'DELETE ME expect' );
          expect( widgetEventBus.publish )
             .toHaveBeenCalledWith( 'takeActionRequest.selectionDone', {
                action: 'selectionDone'
@@ -382,8 +378,10 @@ describe( 'An ax-accordion-widget', () => {
          // Simulate the initial activation and subsequent watcher reaction by the accordion directive
          widgetScope.model.onBeforeActivate( 0 );
          testEventBus.flush();
-         widgetScope.model.onBeforeActivate( 0 );
-         flushVisibility().then( done );
+         flushVisibility().then( () => {
+            widgetScope.model.onBeforeActivate( 0 );
+            flushVisibility().then( done );
+         } );
       } );
 
       ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -404,29 +402,25 @@ describe( 'An ax-accordion-widget', () => {
 
       ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-      describe( 'when a confirmation action is configured', () => {
+      it( 'selects the panel when the configured confirmation action is received (R2.4)', done => {
+         widgetScope.model.onBeforeActivate( 2 );
+         flushVisibility().then( () => {
+            expect( widgetScope.model.selectedPanel ).toEqual( 0 );
 
-         it( 'selects the panel when the confirmation action is received (R2.4)', done => {
-            widgetScope.model.onBeforeActivate( 2 );
+            testEventBus.publish( 'takeActionRequest.selectionConfirmed', {
+               action: 'selectionConfirmed'
+            } );
             flushVisibility().then( () => {
-               expect( widgetScope.model.selectedPanel ).toEqual( 0 );
-
-               testEventBus.publish( 'takeActionRequest.selectionConfirmed', {
-                  action: 'selectionConfirmed'
-               } );
-               flushVisibility().then( () => {
-                  expect( widgetScope.model.selectedPanel ).toEqual( 2 );
-                  done();
-               } );
+               expect( widgetScope.model.selectedPanel ).toEqual( 2 );
+               done();
             } );
          } );
-
       } );
 
       ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
       it( 'ignores (but logs) confirmation without preceeding request (R2.5)', done => {
-         console.log( 'confirm!' );
+         expect( widgetEventBus.publish ).not.toHaveBeenCalled();
          testEventBus.publish( 'takeActionRequest.selectionConfirmed', {
             action: 'selectionConfirmed'
          } );
