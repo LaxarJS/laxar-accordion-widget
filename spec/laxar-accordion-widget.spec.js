@@ -7,7 +7,7 @@ import * as axMocks from 'laxar-mocks';
 import 'angular';
 import 'angular-mocks';
 
-describe( 'An ax-accordion-widget', () => {
+describe( 'A laxar-accordion-widget', () => {
 
    let widgetEventBus;
    let widgetScope;

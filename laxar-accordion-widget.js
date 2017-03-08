@@ -10,22 +10,22 @@ Controller.$inject = [ '$scope', 'axEventBus', 'axFeatures', 'axLog', 'axVisibil
 
 function Controller( $scope, eventBus, features, log, visibility, i18n ) {
 
+   const { localize } = i18n;
+   const INITIAL_PANEL = 0;
+
    let requestedPanelIndex = -1;
    let allowNextPanelActivation = false;
 
    $scope.model = {
-      panels: [],
-      selectedPanel: 0
+      panels: features.areas.map( createPanelModel ),
+      selectedPanel: INITIAL_PANEL
    };
 
-   const { localize } = i18n;
    i18n.whenLocaleChanged( () => {
       $scope.model.panels.forEach( ( areaModel, index ) => {
          areaModel.htmlLabel = localize( features.areas[ index ].i18nHtmlLabel );
       } );
    } );
-
-   $scope.model.panels = features.areas.map( createPanelModel );
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -61,7 +61,7 @@ function Controller( $scope, eventBus, features, log, visibility, i18n ) {
             'ax-anonymize-me': area.anonymize,
             disabled: false,
             error: false,
-            active: index === $scope.model.selectedPanel
+            active: index === INITIAL_PANEL
          }
       };
 
