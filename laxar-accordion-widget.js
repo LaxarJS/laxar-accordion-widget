@@ -29,7 +29,7 @@ function Controller( $scope, eventBus, features, log, visibility, i18n ) {
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-   $scope.eventBus.subscribe( 'beginLifecycleRequest', () => {
+   eventBus.subscribe( 'beginLifecycleRequest', () => {
       $scope.model.panels.forEach( ( panel, i ) => {
          publishFlagIfConfigured( i, $scope.model.selectedPanel === i );
       } );
@@ -77,13 +77,13 @@ function Controller( $scope, eventBus, features, log, visibility, i18n ) {
 
       if( area.selectionRequestTrigger && area.selectionRequestTrigger.onActions ) {
          area.selectionRequestTrigger.onActions.forEach( action => {
-            $scope.eventBus.subscribe( `takeActionRequest.${action}`,
+            eventBus.subscribe( `takeActionRequest.${action}`,
                createSelectionRequestTriggerHandler( area, index ) );
          } );
       }
 
       if( area.selectionRequest && area.selectionRequest.confirmationAction ) {
-         $scope.eventBus.subscribe(
+         eventBus.subscribe(
             `takeActionRequest.${area.selectionRequest.confirmationAction}`,
             handleDidConfirmSelection
          );
@@ -109,7 +109,7 @@ function Controller( $scope, eventBus, features, log, visibility, i18n ) {
          publishFlagIfConfigured( newIndex, true );
          const { action } = features.areas[ newIndex ].selection || {};
          if( action ) {
-            $scope.eventBus.publish( `takeActionRequest.${action}`, { action } );
+            eventBus.publish( `takeActionRequest.${action}`, { action } );
          }
          visibilityChanges[ $scope.model.panels[ newIndex ].areaName ] = true;
       }
@@ -165,7 +165,7 @@ function Controller( $scope, eventBus, features, log, visibility, i18n ) {
       if( selectionRequest ) {
          const { action } = selectionRequest || {};
          requestedPanelIndex = index;
-         $scope.eventBus.publish( `takeActionRequest.${action}`, { action } );
+         eventBus.publish( `takeActionRequest.${action}`, { action } );
       }
       else {
          setSelectedPanel( index );
@@ -181,7 +181,7 @@ function Controller( $scope, eventBus, features, log, visibility, i18n ) {
       if( !flag ) { return; }
       const flagName = flag.replace( /^!/, '' );
       const isInverted = flagName !== flag;
-      $scope.eventBus.subscribe( `didChangeFlag.${flagName}`, event => {
+      eventBus.subscribe( `didChangeFlag.${flagName}`, event => {
          handler( isInverted ? !event.state : event.state );
       } );
    }
@@ -191,7 +191,7 @@ function Controller( $scope, eventBus, features, log, visibility, i18n ) {
    function publishFlagIfConfigured( areaIndex, state ) {
       const { flag } = features.areas[ areaIndex ];
       if( flag ) {
-         $scope.eventBus.publish( `didChangeFlag.${flag}.${state}`, { flag, state } );
+         eventBus.publish( `didChangeFlag.${flag}.${state}`, { flag, state } );
       }
    }
 
