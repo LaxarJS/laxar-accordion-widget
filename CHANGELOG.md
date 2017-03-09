@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+
+## v3.0.0-alpha.0
+
 - [#17](https://github.com/LaxarJS/ax-accordion-widget/issues/17): upgraded to LaxarJS v2
     + **BREAKING CHANGE:** see ticket for details
 - [#16](https://github.com/LaxarJS/ax-accordion-widget/issues/16): updated ax-accordion-control patch version to fix jQuery UI dependency
