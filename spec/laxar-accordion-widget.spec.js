@@ -182,7 +182,7 @@ describe( 'A laxar-accordion-widget', () => {
 
       it( 'prevents from selecting a disabled panel (R1.7)', done => {
          widgetScope.model.onBeforeActivate( 1 );
-         flushVisibility().then( () => {
+         testEventBus.drainAsync().then( () => {
             expect( widgetScope.model.selectedPanel ).toEqual( 1 );
 
             testEventBus.publish( 'didChangeFlag.secondPanelDisabled.true', {
@@ -192,7 +192,7 @@ describe( 'A laxar-accordion-widget', () => {
             testEventBus.flush();
             widgetScope.model.onBeforeActivate( 1 );
 
-            flushVisibility().then( () => {
+            testEventBus.drainAsync().then( () => {
                expect( widgetScope.model.selectedPanel ).not.toEqual( 2 );
 
                testEventBus.publish( 'didChangeFlag.secondPanelDisabled.false', {
@@ -201,7 +201,7 @@ describe( 'A laxar-accordion-widget', () => {
                } );
                testEventBus.flush();
                widgetScope.model.onBeforeActivate( 2 );
-               flushVisibility().then( () => {
+               testEventBus.drainAsync().then( () => {
                   expect( widgetScope.model.selectedPanel ).toEqual( 2 );
                   done();
                } );
@@ -265,12 +265,12 @@ describe( 'A laxar-accordion-widget', () => {
 
       it( 'the selected tab is highlighted (R1.14)', done => {
          widgetScope.model.onBeforeActivate( 0 );
-         flushVisibility().then( () => {
+         testEventBus.drainAsync().then( () => {
             expect( widgetScope.model.panels[ 0 ].classes.active ).toBe( true );
             expect( widgetScope.model.panels[ 1 ].classes.active ).toBe( false );
 
             widgetScope.model.onBeforeActivate( 1 );
-            flushVisibility().then( () => {
+            testEventBus.drainAsync().then( () => {
                expect( widgetScope.model.panels[ 0 ].classes.active ).toBe( false );
                expect( widgetScope.model.panels[ 1 ].classes.active ).toBe( true );
                done();
@@ -284,7 +284,7 @@ describe( 'A laxar-accordion-widget', () => {
          widgetScope.model.onBeforeActivate( 0 );
          testEventBus.flush();
          expect( widgetScope.model.onBeforeActivate( 1 ) ).toBe( false );
-         flushVisibility().then( () => {
+         testEventBus.drainAsync().then( () => {
             expect( widgetScope.model.onBeforeActivate( 1 ) ).toBe( true );
             done();
          } );
@@ -326,7 +326,7 @@ describe( 'A laxar-accordion-widget', () => {
          widgetScope.model.onBeforeActivate( 0 );
          testEventBus.flush();
          widgetScope.model.onBeforeActivate( 1 );
-         flushVisibility().then( () => {
+         testEventBus.drainAsync().then( () => {
             testEventBus.flush();
             done();
          } );
@@ -378,9 +378,9 @@ describe( 'A laxar-accordion-widget', () => {
          // Simulate the initial activation and subsequent watcher reaction by the accordion directive
          widgetScope.model.onBeforeActivate( 0 );
          testEventBus.flush();
-         flushVisibility().then( () => {
+         testEventBus.drainAsync().then( () => {
             widgetScope.model.onBeforeActivate( 0 );
-            flushVisibility().then( done );
+            testEventBus.drainAsync().then( done );
          } );
       } );
 
@@ -404,13 +404,13 @@ describe( 'A laxar-accordion-widget', () => {
 
       it( 'selects the panel when the configured confirmation action is received (R2.4)', done => {
          widgetScope.model.onBeforeActivate( 2 );
-         flushVisibility().then( () => {
+         testEventBus.drainAsync().then( () => {
             expect( widgetScope.model.selectedPanel ).toEqual( 0 );
 
             testEventBus.publish( 'takeActionRequest.selectionConfirmed', {
                action: 'selectionConfirmed'
             } );
-            flushVisibility().then( () => {
+            testEventBus.drainAsync().then( () => {
                expect( widgetScope.model.selectedPanel ).toEqual( 2 );
                done();
             } );
@@ -424,7 +424,7 @@ describe( 'A laxar-accordion-widget', () => {
          testEventBus.publish( 'takeActionRequest.selectionConfirmed', {
             action: 'selectionConfirmed'
          } );
-         flushVisibility().then( () => {
+         testEventBus.drainAsync().then( () => {
             expect( widgetScope.model.selectedPanel ).toEqual( 0 );
             expect( axMocks.widget.axLog.debug ).toHaveBeenCalled();
             done();
@@ -495,7 +495,7 @@ describe( 'A laxar-accordion-widget', () => {
             testEventBus.publish( 'takeActionRequest.pleasePleaseSelectSecondArea', {
                action: 'pleasePleaseSelectSecondArea'
             } );
-            flushVisibility().then( done );
+            testEventBus.drainAsync().then( done );
          } );
 
          /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -544,10 +544,5 @@ describe( 'A laxar-accordion-widget', () => {
       } );
 
    } );
-
-   function flushVisibility() {
-      testEventBus.flush();
-      return Promise.resolve();
-   }
 
 } );

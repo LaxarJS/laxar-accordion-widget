@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#18](https://github.com/LaxarJS/ax-accordion-widget/issues/18): tests: simplified and modernized
+
 
 ## v3.0.0-alpha.0
 
