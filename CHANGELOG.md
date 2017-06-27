@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+## v3.0.0-rc.0
+
 - [#19](https://github.com/LaxarJS/laxar-accordion-widget/issues/19): renamed repository to match artifact
 - [#18](https://github.com/LaxarJS/laxar-accordion-widget/issues/18): tests: simplified and modernized
 
