@@ -1,6 +1,6 @@
 {
   "name": "laxar-accordion-widget",
-  "version": "3.0.0-rc.0",
+  "version": "3.0.0-rc.1",
   "description": "Provides multiple widget areas in the form of an accordion",
   "homepage": "http://laxarjs.org",
   "main": "laxar-accordion-widget.js",

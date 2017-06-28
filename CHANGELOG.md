@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+
+## v3.0.0-rc.1
+
 - [#20](https://github.com/LaxarJS/laxar-accordion-widget/issues/20): added ngSanitize as widget module dependency
 
 
