@@ -5,6 +5,7 @@
  */
 
 import * as ng from 'angular';
+import 'angular-sanitize';
 
 Controller.$inject = [ '$scope', 'axEventBus', 'axFeatures', 'axLog', 'axVisibility', 'axI18n' ];
 
@@ -20,6 +21,7 @@ function Controller( $scope, eventBus, features, log, visibility, i18n ) {
       panels: features.areas.map( createPanelModel ),
       selectedPanel: INITIAL_PANEL
    };
+
 
    i18n.whenLocaleChanged( () => {
       $scope.model.panels.forEach( ( areaModel, index ) => {
@@ -199,5 +201,5 @@ function Controller( $scope, eventBus, features, log, visibility, i18n ) {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-export const name = ng.module( 'axAccordionWidget', [] )
+export const name = ng.module( 'axAccordionWidget', [ 'ngSanitize' ] )
    .controller( 'AxAccordionWidgetController', Controller ).name;
